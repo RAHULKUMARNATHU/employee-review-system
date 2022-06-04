@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start" : "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/RAHULKUMARNATHU/employee-review-system/issues"
   },
-  "homepage": "https://github.com/RAHULKUMARNATHU/employee-review-system#readme"
+  "homepage": "https://github.com/RAHULKUMARNATHU/employee-review-system#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-ejs-layouts": "^2.5.1"
+  }
 }
