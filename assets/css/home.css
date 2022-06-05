@@ -1,29 +1,78 @@
-
-.w-4{
-    width:45%;
+.w-4 {
+  width: 45%;
 }
-#body-container{
-    display: flex;
-    justify-content: space-around;
-}
-
-.no-b{
-    border: 0px solid white;
+#body-container {
+  display: flex;
+  justify-content: space-around;
 }
 
-.w-100{
-    width:100%;
+.no-b {
+  border: 0px solid white;
 }
 
-#body-container{
-    margin-top: 60px;
+.w-100 {
+  width: 100%;
 }
 
-.right-alligned{
-    display: flex;
-    justify-content: end;
+#body-container {
+  margin-top: 60px;
 }
 
-.m-10{
-    margin:10px;
+.right-alligned {
+  display: flex;
+  justify-content: end;
+}
+
+.m-10 {
+  margin: 10px;
+}
+
+body {
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #6a11cb;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to right,
+    rgba(106, 17, 203, 1),
+    rgba(37, 117, 252, 1)
+  );
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(
+    to right,
+    rgba(106, 17, 203, 1),
+    rgba(37, 117, 252, 1)
+  );
+}
+
+.mb-4 {
+  margin-bottom: 1.2rem !important;
+}
+
+.mt-4 {
+  margin-top: 1rem !important;
+}
+.p-5 {
+  padding: 1.5rem !important;
+}
+
+.form-control-lg {
+  min-height: calc(1em + 1rem + 2px);
+  padding: 0.5rem 0.5rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+}
+
+.py-5 {
+  padding-top: 1rem !important;
+  padding-bottom: 3rem !important;
+}
+.pb-5 {
+  padding-bottom: 1.5rem !important;
 }

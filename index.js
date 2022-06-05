@@ -33,8 +33,8 @@ app.set('views', './views');
 
 // middleware for use session cookie
 app.use(session({
-    name : 'habit-tracker',
-    secret : 'nothing',
+    name : 'employeeReview',
+    secret : 'MicroTask',
     saveUninitialized : false,
     resave : false,
     cookie : {
