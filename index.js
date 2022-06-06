@@ -12,7 +12,7 @@ const MongoStore = require("connect-mongo");
 // const db = require("./config/mongoose");
 
 const DB = process.env.DATABASE;
-const port = process.env.port;
+const port = process.env.PORT;
 
 mongoose
   .connect(DB, {
