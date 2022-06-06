@@ -1,18 +1,21 @@
 const express = require("express");
-const dotenv = require("dotenv"); //require dotenv package
-const mongoose = require('mongoose')
-dotenv.config({ path: "./config.env" }); //import config.env file
-
-const app = express();
-
 const expressLayouts = require("express-ejs-layouts");
+const session = require("express-session");
+const dotenv = require("dotenv"); //require dotenv package
+dotenv.config({ path: "./config.env" }); //import config.env file
+const mongoose = require("mongoose");
 
-// const db = require("./config/mongoose");
-const port = process.env.port || 8000;
+const passport = require("passport");
+const passportLocal = require("./config/passport-local");
+const MongoStore = require("connect-mongo");
+
+const db = require("./config/mongoose");
 
 const DB = process.env.DATABASE;
+const port = process.env.port;
 
-mongoose.connect(DB, {
+mongoose
+  .connect(DB, {
     usenewurlparser: true,
     useunifiedtopology: true,
   })
@@ -23,28 +26,21 @@ mongoose.connect(DB, {
     console.log(`can not connect to database, ${error}`);
   });
 
-// passport setup session cookie
-const session = require("express-session");
-const passport = require("passport");
-const passportLocal = require("./config/passport-local");
-
-const MongoStore = require("connect-mongo");
-
-// for gettingform data
-app.use(express.urlencoded());
+const app = express();
 
 // for static files
-app.use(express.static("./assets"));
-
 app.use(expressLayouts);
+app.use(express.static("./assets"));
+// view engine
+app.set("view engine", "ejs");
+app.set("views", "./views");
+
+//------BodyParser--------//
+app.use(express.urlencoded({ extended: false }));
 
 // to render css file link in header
 app.set("layout extractStyles", true);
 app.set("layout extractScripts", true);
-
-// view engine
-app.set("view engine", "ejs");
-app.set("views", "./views");
 
 // middleware for use session cookie
 app.use(
