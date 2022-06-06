@@ -16,4 +16,7 @@ router.post('/newAdmin', passport.checkAuthentication, adminController.newAdmin)
 // for viewing all employees list
 router.get('/view-employees', passport.checkAuthentication, adminController.viewEmployees);
 
+// delete an employee
+router.get('/delete-employee/:id', passport.checkAuthentication, adminController.deleteEmployee);
+
 module.exports = router;

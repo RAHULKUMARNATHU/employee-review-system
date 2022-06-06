@@ -73,62 +73,73 @@ module.exports.setReviewrs = async function (req, res) {
   }
 };
 
-
 // make admin to an employee
-module.exports.newAdmin = async function(req, res){
-  try{
-      if(!req.isAuthenticated()){
-          return res.redirect('/users/login');
+module.exports.newAdmin = async function (req, res) {
+  try {
+    if (!req.isAuthenticated()) {
+      return res.redirect("/users/login");
+    }
+    if (req.user.isAdmin == true) {
+      let employee = await User.findById(req.body.newAdmin);
+
+      if (!employee) {
+        return res.redirect("back");
       }
-      if(req.user.isAdmin == true){
-          let employee = await User.findById(req.body.newAdmin);
-  
-          if(!employee){
-              return res.redirect('back');
-          }
-  
-          if(employee.isAdmin == true){
-              return res.redirect('back');
-          }
-  
-          if(employee.isAdmin == false){
-              employee.isAdmin = true,
-              employee.save();
-  
-              return res.redirect('/admin/admin-page');
-          }
+
+      if (employee.isAdmin == true) {
+        return res.redirect("back");
       }
-  }catch(err){
-      console.log("Error", err);
-      return;
-  };
-  
+
+      if (employee.isAdmin == false) {
+        (employee.isAdmin = true), employee.save();
+
+        return res.redirect("/admin/admin-page");
+      }
+    }
+  } catch (err) {
+    console.log("Error", err);
+    return;
+  }
 };
 
-
 // views employees
-module.exports.viewEmployees = async function(req, res){
-  try{
-      if(req.isAuthenticated()){
-          if(req.user.isAdmin){
-              let employees = await User.find({});
-              
-              if(employees){
-                  return res.render('employee', {
-                      title : "ERS | Employee",
-                      employees : employees,
-                  });
-              }
-          }else{
-              console.log("user is not authorized check list of Employees");
-              return res.redirect('/');
-          }
-      }else{
-          console.log("user not authenticated");
-          return res.redirect("/users/login");
+module.exports.viewEmployees = async function (req, res) {
+  try {
+    if (req.isAuthenticated()) {
+      if (req.user.isAdmin) {
+        let employees = await User.find({});
+
+        if (employees) {
+          return res.render("employee", {
+            title: "ERS | Employee",
+            employees: employees,
+          });
+        }
+      } else {
+        console.log("user is not authorized check list of Employees");
+        return res.redirect("/");
       }
-  }catch(err){
-      console.log("Error", err);
-      return;
+    } else {
+      console.log("user not authenticated");
+      return res.redirect("/users/login");
+    }
+  } catch (err) {
+    console.log("Error", err);
+    return;
+  }
+};
+
+// delete employee
+module.exports.deleteEmployee = async function (req, res) {
+  try {
+    if (req.isAuthenticated()) {
+      if (req.user.isAdmin) {
+        await User.deleteOne({ _id: req.params.id });
+        return res.redirect("/admin/view-employees");
+      }
+    }
+  } catch (err) {
+    console.log("Error", err);
+    return;
   }
 };
