@@ -12,7 +12,7 @@ const MongoStore = require("connect-mongo");
 // const db = require("./config/mongoose");
 
 const DB = process.env.DATABASE;
-const port = process.env.PORT;
+const PORT = process.env.PORT;
 
 mongoose
   .connect(DB, {
@@ -71,10 +71,10 @@ app.use(passport.setAuthenticatedUser);
 
 app.use("/", require("./routes/index"));
 
-app.listen(port, function (err) {
+app.listen(PORT, function (err) {
   if (err) {
     console.log("Error while connecting to server");
     return;
   }
-  console.log(`Server running on port ${port}.`);
+  console.log(`Server running on port ${PORT}.`);
 });
