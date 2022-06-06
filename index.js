@@ -9,7 +9,7 @@ const passport = require("passport");
 const passportLocal = require("./config/passport-local");
 const MongoStore = require("connect-mongo");
 
-const db = require("./config/mongoose");
+// const db = require("./config/mongoose");
 
 const DB = process.env.DATABASE;
 const port = process.env.port;
