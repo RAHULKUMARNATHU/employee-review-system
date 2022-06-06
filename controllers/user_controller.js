@@ -21,14 +21,15 @@ module.exports.createUser = async function(req, res){
             await User.create({
                 name : req.body.name,
                 email : req.body.email,
-                isAdmin : true,
+                isAdmin : false,
                 password : req.body.password
             });
             console.log('User created successfully');
-            // if(req.user.isAdmin){
-            //     return res.redirect('/');
-            // }
+            if(req.user.isAdmin){
+                return res.redirect('/');
+            }
             return res.redirect('/users/login');
+
         }
     
     } catch (error) {

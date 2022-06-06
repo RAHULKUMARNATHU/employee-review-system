@@ -11,7 +11,7 @@ router.use('/users', require('./user'));
 
 router.use('/admin', require('./admin'));
 
-// router.use('/reviews', require('./review'));
+router.use('/reviews', require('./review'));
 
 
 module.exports = router;

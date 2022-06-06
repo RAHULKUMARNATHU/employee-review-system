@@ -30,3 +30,45 @@ module.exports.adminPage = async function (req, res) {
     }
   }
 };
+
+// set review for employee
+module.exports.setReviewrs = async function (req, res) {
+  try {
+    if (!req.isAuthenticated()) {
+      return res.redirect("/users/login");
+    } else {
+      let employee = await User.findById(req.user.id);
+
+      if (employee.isAdmin == false) {
+        console.log("You are not an admin");
+        return res.redirect("/");
+      } else if (req.body.Reviewer == req.body.Recipient) {
+        return res.redirect("back");
+      } else {
+        let reviewer = await User.findById(req.body.Reviewer);
+
+        // if reviewer not found
+        if (!reviewer) {
+          return res.redirect("back");
+        }
+
+        let recipient = await User.findById(req.body.Recipient);
+
+        if (!recipient) {
+          return res.redirect("back");
+        }
+
+        reviewer.to.push(recipient);
+        reviewer.save();
+
+        recipient.from.push(reviewer);
+        recipient.save();
+
+        return res.redirect("back");
+      }
+    }
+  } catch (err) {
+    console.log("Error", err);
+    return;
+  }
+};
