@@ -10,5 +10,10 @@ router.get('/admin-page', passport.checkAuthentication, adminController.adminPag
 // set reviewers to employee
 router.post('/set-Reviewers', passport.checkAuthentication, adminController.setReviewrs);
 
+// make new admin to employee
+router.post('/newAdmin', passport.checkAuthentication, adminController.newAdmin);
+
+// for viewing all employees list
+router.get('/view-employees', passport.checkAuthentication, adminController.viewEmployees);
 
 module.exports = router;
