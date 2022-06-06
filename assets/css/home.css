@@ -30,9 +30,6 @@
 body {
   overflow-y: hidden; /* Hide vertical scrollbar */
   overflow-x: hidden; /* Hide horizontal scrollbar */
-}
-
-.gradient-custom {
   /* fallback for old browsers */
   background: #6a11cb;
 
@@ -50,6 +47,8 @@ body {
     rgba(37, 117, 252, 1)
   );
 }
+
+
 
 .mb-4 {
   margin-bottom: 1.2rem !important;
