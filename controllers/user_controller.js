@@ -21,7 +21,7 @@ module.exports.createUser = async function(req, res){
             await User.create({
                 name : req.body.name,
                 email : req.body.email,
-                isAdmin : false,
+                isAdmin : true,
                 password : req.body.password
             });
             console.log('User created successfully');
@@ -72,8 +72,8 @@ module.exports.login = function(req, res){
 module.exports.register = function(req, res){
     // if user is authenticate then not able to register self;
     if(req.isAuthenticated() && req.user.isAdmin){
-        return res.render('register', {
-            title : "ERS | Register"
+        return res.render('addUser', {
+            title : "ERS | Add User"
         });
     }
 
