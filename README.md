@@ -23,10 +23,10 @@
   $ nodemon index.js 
   ```
   
-  To create admin go to user controller and make `` isAdmin : true``
+  To create admin go to user controller and make ``` isAdmin : true ```
   and run Project and signup Now.
   
-  Keep Mind make it false then run again for employee
+  Keep Mind make it ``` isAdmin : false ``` then run again for employee
   
   ## Features
   * Admin View
