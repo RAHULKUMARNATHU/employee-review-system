@@ -1,5 +1,9 @@
 const User = require("../models/users");
 const Review = require("../models/review");
+
+
+
+
 module.exports.adminPage = async function (req, res) {
   if (!req.isAuthenticated()) {
     return res.redirect("/users/login");

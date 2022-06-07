@@ -10,22 +10,22 @@ const passport = require("passport");
 const passportLocal = require("./config/passport-local");
 const MongoStore = require("connect-mongo");
 
-// const db = require("./config/mongoose");
+const db = require("./config/mongoose");
 
-const DB = process.env.DATABASE;
+// const DB = process.env.DATABASE;
 const PORT = process.env.PORT;
 
-mongoose
-  .connect(DB, {
-    usenewurlparser: true,
-    useunifiedtopology: true,
-  })
-  .then(() => {
-    console.log("Successfully connected ");
-  })
-  .catch((error) => {
-    console.log(`can not connect to database, ${error}`);
-  });
+// mongoose
+//   .connect(DB, {
+//     usenewurlparser: true,
+//     useunifiedtopology: true,
+//   })
+//   .then(() => {
+//     console.log("Successfully connected ");
+//   })
+//   .catch((error) => {
+//     console.log(`can not connect to database, ${error}`);
+//   });
 
 const app = express();
 
